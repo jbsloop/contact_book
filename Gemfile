@@ -66,3 +66,5 @@ gem 'devise', '~> 4.2'
 gem 'pry'
 
 gem 'pry-byebug'
+
+gem 'webpacker', '~> 4.x'

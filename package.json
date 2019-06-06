@@ -1,7 +1,9 @@
 {
   "name": "contact_book",
   "private": true,
-  "dependencies": {},
+  "dependencies": {
+    "@rails/webpacker": "^4.0.7"
+  },
   "devDependencies": {
     "webpack": "^4.33.0",
     "webpack-dev-server": "^3.7.0"
