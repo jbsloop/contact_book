@@ -1,0 +1,9 @@
+{
+  "name": "contact_book",
+  "private": true,
+  "dependencies": {},
+  "devDependencies": {
+    "webpack": "^4.33.0",
+    "webpack-dev-server": "^3.7.0"
+  }
+}
