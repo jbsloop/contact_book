@@ -1,33 +1,14 @@
+
 <p id="notice"><%= notice %></p>
 
-<h1>Contacts</h1>
+<h1 class="text-center" style="color: white">Contacts</h1>
 
-<table>
-  <thead>
-    <tr>
-      <th>First name</th>
-      <th>Last name</th>
-      <th>Email</th>
-      <th>User</th>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
-
-  <tbody>
+<div class="container bg-dark">
+  <div class="list-group">
     <% @contacts.each do |contact| %>
-      <tr>
-        <td><%= contact.first_name %></td>
-        <td><%= contact.last_name %></td>
-        <td><%= contact.email %></td>
-        <td><%= contact.user_id %></td>
-        <td><%= link_to 'Show', contact %></td>
-        <td><%= link_to 'Edit', edit_contact_path(contact) %></td>
-        <td><%= link_to 'Destroy', contact, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
+        <a class="list-group-item list-group-item-action text-dark text-center bg-light" style="font-size: 1.5em" href="/contacts/<%= contact.id %>" role="button"><%= contact.first_name %> <%= contact.last_name %></a>     
     <% end %>
-  </tbody>
-</table>
-
-<br>
-
-<%= link_to 'New Contact', new_contact_path %>
+  
+    <a class="btn btn-info btn-lg btn-block text-white" href="<%= new_contact_path %>" role="button">New Contact</a>
+  </div>
+</div>

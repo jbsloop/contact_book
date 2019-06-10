@@ -68,3 +68,9 @@ gem 'pry'
 gem 'pry-byebug'
 
 gem 'webpacker', '~> 4.x'
+
+gem 'bootstrap', '~> 4.3.1'
+
+gem 'font-awesome-sass', '~> 5.8.1'
+
+gem 'bootstrap_form'

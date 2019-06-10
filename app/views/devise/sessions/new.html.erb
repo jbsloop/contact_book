@@ -1,0 +1,15 @@
+<h1 class="text-center" style="color: white">Log In</h1><br>
+<div class="mx-auto align-content-center" style="color: white; width: 400px;">
+  <%= bootstrap_form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
+    <%= f.email_field :email, autofocus: true, autocomplete: "email"  %>
+    <%= f.password_field :password, autocomplete: "current-password" %>
+    <%= f.check_box :remember_me %><br>
+    <%= render "devise/shared/links" %><br>
+
+    <div class="row">
+      <div class="col text-center">
+        <%= f.submit "Log in", class: "btn btn-light btn-lg" %>
+      </div>
+    </div>
+  <% end %>
+</div>
