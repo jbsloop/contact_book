@@ -1,0 +1,27 @@
+<% if notice.present? %>
+    <p id="notice" class="alert alert-light text-center" style="color: red;"><%= notice %></p>
+<% end %>
+
+<div class="container bg-dark">
+    <div class="list-group">
+        <% @users.order(:created_at).each do |user| %>
+            <li class="list-group-item text-dark text-center bg-light clearfix" style="font-size: 1.5em">
+                <% if user.admin? %> 
+                    <i class="fas fa-crown"></i>
+                <% end %>
+
+                <%= user.email %>
+
+                <a href="<%= admin_user_change_role_path(user.id) %>" rel="nofollow" class="btn btn-info btn-md float-right" style="color: white">
+                    <% if user.admin? %>
+                        Make User
+                    <% else %>
+                        Make Admin
+                    <% end %>
+                </a>
+                <a href="<%= admin_user_destroy_path(user.id) %>" class="fas fa-trash" data-method="delete"></a>
+            </li>
+            <div class="clearfix"></div>
+        <% end %>
+    </div>
+</div>

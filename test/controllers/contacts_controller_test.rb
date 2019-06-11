@@ -1,8 +1,11 @@
 require 'test_helper'
 
 class ContactsControllerTest < ActionDispatch::IntegrationTest
+  include Devise::Test::IntegrationHelpers
+  
   setup do
     @contact = contacts(:one)
+    sign_in users(:one)
   end
 
   test "should get index" do
@@ -35,7 +38,7 @@ class ContactsControllerTest < ActionDispatch::IntegrationTest
 
   test "should update contact" do
     patch contact_url(@contact), params: { contact: { email: @contact.email, first_name: @contact.first_name, last_name: @contact.last_name, user_id: @contact.user_id } }
-    assert_redirected_to contact_url(@contact)
+    assert_response :success
   end
 
   test "should destroy contact" do

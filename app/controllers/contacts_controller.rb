@@ -6,6 +6,7 @@ class ContactsController < ApplicationController
   # GET /contacts.json
   def index
     @contacts = Contact.where(user_id: current_user.id)
+    @contacts.order(:first_name)
   end
 
   # GET /contacts/1
