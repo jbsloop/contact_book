@@ -13,15 +13,17 @@
   <body class="bg-dark">
     <% if current_user %>
     
-      <p style="color: white">Signed in as <%= current_user.email %><a class="btn btn-link btn-sm" href="<%= destroy_user_session_path %> " rel="nofollow" data-method="delete" data-confirm="Are you sure?" role="button" style="color: white;"> Sign Out</a></p>
+      <p class="float-right" style="color: white">Signed in as <%= current_user.email %><a class="btn btn-link btn-sm" href="<%= destroy_user_session_path %> " rel="nofollow" data-method="delete" data-confirm="Are you sure?" role="button" style="color: white;"> Sign Out</a></p>
       
       <% if current_user.admin? && request.original_url != admin_users_url %>
 
-        <p><a class="btn btn-light btn-sm" style="color: black;" href="<%= admin_users_path %>">Admin Dashboard</a></p>
+        <p><a class="btn btn-light btn-sm float-left" style="color: black;" href="<%= admin_users_path %>">Admin Dashboard</a></p>
+        <p class="clearfix"></p>
 
       <% elsif request.original_url == admin_users_url%>
 
-        <p><a class="btn btn-light btn-sm" style="color: black;" href="<%= contacts_path %>">Back</a></p>
+        <p><a class="btn btn-light btn-sm" style="color: black;" href="<%= address_books_path %>">Back</a></p>
+        <p class="clearfix"></p>
 
       <% end %>
     <% end %>

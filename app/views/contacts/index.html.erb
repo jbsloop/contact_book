@@ -1,14 +1,19 @@
 
-<p id="notice"><%= notice %></p>
+<p id="notice" class="text-center"><%= notice %></p>
 
-<h1 class="text-center" style="color: white">Contacts</h1>
-
+<div class="container">
+  <a class="btn btn-link btn-small float-left" style="color: white;" href="<%= address_books_path %>">Back</a>
+  <span class="clearfix"></span>
+  <h1 class="text-center" style="color: white"><%= @address_book.name %></h1>
+  <br>
+</div>
+<div class="clearfix"></div>
 <div class="container bg-dark">
   <div class="list-group">
     <% @contacts.each do |contact| %>
-        <a class="list-group-item list-group-item-action text-dark text-center bg-light" style="font-size: 1.5em" href="/contacts/<%= contact.id %>" role="button"><%= contact.first_name %> <%= contact.last_name %></a>     
+        <a class="list-group-item list-group-item-action text-dark text-center bg-light" style="font-size: 1.5em" href="<%= address_book_contact_path(@address_book, contact) %>" role="button"><%= contact.first_name %> <%= contact.last_name %></a>     
     <% end %>
   
-    <a class="btn btn-info btn-lg btn-block text-white" href="<%= new_contact_path %>" role="button">New Contact</a>
+    <a class="btn btn-info btn-lg btn-block text-white" href="<%= new_address_book_contact_path %>" role="button"><i class="fas fa-plus fa-sm"></i> New Contact</a>
   </div>
 </div>

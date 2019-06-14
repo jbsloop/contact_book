@@ -3,15 +3,15 @@
 <div class="card" style="width: 30em;">
   <div class="card-body bg-light">
     <h6 class="font-weight-bold float-left"><%= @contact.first_name %> <%= @contact.last_name %> <small class="text-muted"><%= time_ago_in_words(@contact.updated_at) %> ago</small></h6>
-    <a class="btn btn-light btn-sm text-dark fas fa-trash float-right" href="<%= @contact %> " rel="nofollow" data-method="delete" data-confirm="Are you sure?" role="button"></a>
-    <a href="<%= edit_contact_path(@contact) %>" class="btn btn-light btn-sm text-dark float-right fas fa-edit" role="button"></a>
+    <a class="btn btn-light btn-sm text-dark fas fa-trash float-right" href="<%= address_book_contact_path(@address_book, @contact) %> " rel="nofollow" data-method="delete" data-confirm="Are you sure?" role="button"></a>
+    <a href="<%= edit_address_book_contact_path(@address_book, @contact) %>" class="btn btn-light btn-sm text-dark float-right fas fa-edit" role="button"></a>
 
     <div class="clearfix"></div>
     <p class="card-text text-dark clearfix">Phone Number: <%= @contact.phone_number %></p>
     <p class="card-text text-dark">Email: <%= @contact.email %></p>
     <p class="card-text text-dark">Address: <%= @contact.address %></p>
     <div class="container text-right text-dark">
-      <a href="<%= contacts_path %>" class="btn btn-light btn-sm text-dark" role="button">Back</a>
+      <a href="<%= address_book_contacts_path %>" class="btn btn-light btn-sm text-dark" role="button">Back</a>
     </div>
   </div>
 </div>

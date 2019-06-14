@@ -1,5 +1,5 @@
 class User < ApplicationRecord
-  has_many :contacts
+  has_many :address_books
 
   enum role: [:user, :admin]
   after_initialize :set_default_role, :if => :new_record?

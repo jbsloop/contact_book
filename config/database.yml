@@ -83,3 +83,4 @@ production:
   database: contact_book_production
   username: contact_book
   password: <%= ENV['CONTACT_BOOK_DATABASE_PASSWORD'] %>
+  url:      <%= ENV['DATABASE_URL'] %>

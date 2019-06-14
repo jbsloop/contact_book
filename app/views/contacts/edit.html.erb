@@ -4,6 +4,6 @@
 
 <br>
 <div class="text-center" style="color: white;">
-    <%= link_to 'Show', @contact, style: "color: white;" %> |
-    <%= link_to 'Back', contacts_path, style: "color: white;" %>
+    <%= link_to 'Show', address_book_contact_path(@address_book, @contact), style: "color: white;" %> |
+    <%= link_to 'Back', address_book_contacts_path(@address_book), style: "color: white;" %>
 </div>

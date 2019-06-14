@@ -1,6 +1,8 @@
 Rails.application.routes.draw do
-  root 'contacts#index'
-  resources :contacts
+  resources :address_books do
+    resources :contacts
+  end
+  root 'address_books#index'
   devise_for :users
   namespace :admin do
     resources :users do

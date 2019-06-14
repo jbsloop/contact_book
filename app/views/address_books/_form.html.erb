@@ -1,0 +1,23 @@
+<div class="mx-auto align-content-center" style="color: white; width: 400px;">  
+  <%= bootstrap_form_with(model: @address_book, layout: :vertical) do |form| %>
+    <% if address_book.errors.any? %>
+      <div id="error_explanation">
+        <h2><%= pluralize(address_book.errors.count, "error") %> prohibited this address_book from being saved:</h2>
+
+        <ul>
+        <% address_book.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+        </ul>
+      </div>
+    <% end %>
+
+    <%= form.text_field :name %>
+    <%= form.text_field :description %>
+    <div class="row">
+      <div class="col text-center">
+        <%= form.submit "Save", class: "btn btn-light btn-lg" %>
+      </div>
+    </div>
+  <% end %>
+</div>
