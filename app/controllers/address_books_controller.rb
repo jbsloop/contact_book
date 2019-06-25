@@ -31,7 +31,7 @@ class AddressBooksController < ApplicationController
 
     respond_to do |format|
       if @address_book.save
-        format.html { redirect_to @address_book, notice: 'Address book was successfully created.' }
+        format.html { redirect_to address_books_url, notice: 'Address book was successfully created.' }
         format.json { render :show, status: :created, location: @address_book }
       else
         format.html { render :new }
@@ -45,7 +45,7 @@ class AddressBooksController < ApplicationController
   def update
     respond_to do |format|
       if @address_book.update(address_book_params)
-        format.html { redirect_to @address_book, notice: 'Address book was successfully updated.' }
+        format.html { redirect_to address_books_url, notice: 'Address book was successfully updated.' }
         format.json { render :show, status: :ok, location: @address_book }
       else
         format.html { render :edit }

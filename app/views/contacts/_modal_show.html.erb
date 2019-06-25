@@ -1,9 +1,9 @@
 <div class="modal-dialog" role="document">
     <div class="modal-content">
         <div class="modal-body">
-            <div class="card" style="width: 35xem;">
-                <div class="card-body">
-                    <h6 class="font-weight-bold float-left"><%= @contact.first_name %> <%= @contact.last_name %> <small class="text-muted"><%= time_ago_in_words(@contact.updated_at) %> ago</small></h6>
+            <div class="card" style="width: 35em;">
+                <div class="card-body text-wrap">
+                    <h6 class="font-weight-bold float-left text-wrap" style="width: 25em;"><%= @contact.first_name %> <%= @contact.last_name %> <small class="text-muted"><%= time_ago_in_words(@contact.updated_at) %> ago</small></h6>
 
                     <div class="clearfix"></div>
                     <p class="card-text text-dark clearfix">Phone Number: <%= @contact.phone_number %></p>
