@@ -1,0 +1,32 @@
+<div class="modal-dialog" role="document">
+    <%= bootstrap_form_for([@address_book, @contact], layout: :vertical) do |f| %>
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="<%= @contact %>ModalLabel">Edit</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <div class="mx-auto align-content-center" style="color: white; width: 400px;">
+                    <% if @contact.errors.any? %>
+                        <div id="error_explanation">
+                            <h2><%= pluralize(@contact.errors.count, "error") %> prohibited this contact from being saved:</h2>
+
+                            <ul>
+                                <% @contact.errors.full_messages.each do |message| %>
+                                    <li><%= message %></li>
+                                <% end %>
+                            </ul>
+                        </div>
+                    <% end %>
+                    <%= render partial: "fields", locals: {f: f} %>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                <%= f.submit "Save", class: "btn btn-light btn-lg" %>
+            </div>
+        </div>
+    <% end %>
+</div>

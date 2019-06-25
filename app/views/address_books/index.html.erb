@@ -1,4 +1,9 @@
-<p id="notice"><%= notice %></p>
+<p id="notice" class="text-center"><%= notice %></p>
+
+<%= link_to new_address_book_path(@address_book), remote: true, class: "btn btn-info float-right", style: "color: white;" do %>
+  <i class="fas fa-plus fa-sm"></i> New Address Book
+<% end %>
+<div class="clearfix"></div>
 
 <h1 class="text-center" style="color: white;">Address Books</h1>
 
@@ -8,7 +13,9 @@
         <div class="card bg-light" style="width: 25em;">
           <div class="card-body">
             <a class="btn btn-success text-dark fas fa-trash float-right" href="<%= address_book_path(address_book) %> " rel="nofollow" data-method="delete" data-confirm="Are you sure?" role="button"></a>
-            <a href="<%= edit_address_book_path(address_book) %>" class="btn btn-success text-dark float-left fas fa-edit" role="button"></a>
+            <%= link_to edit_address_book_path(address_book), remote: true, class: "btn btn-success text-dark float-left fas fa-edit" do %>
+
+            <% end %>
             <a href="<%= address_book_contacts_path(address_book) %>" class="btn btn-success btn-block" style="color: white;"><%= address_book.name %></a>
             <br>
             <h6 class="card-subtitle mb-2 text-muted text-center clearfix"><%= address_book.description %></h6>
@@ -18,10 +25,4 @@
     </div>
     <br>
   <% end %>
-<div class="container" style="width: 27em;">
-  <div class="row">
-    <div class="col text-center">
-      <a class="btn btn-info btn-block" style="color: white;" href="<%= new_address_book_path %>"><i class="fas fa-plus fa-sm"></i> New Address Book</a>
-    </div>
-  </div>
 </div>

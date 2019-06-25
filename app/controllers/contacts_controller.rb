@@ -1,7 +1,7 @@
 class ContactsController < ApplicationController
   before_action :authenticate_user!
-  before_action :set_contact, only: [:show, :edit, :update, :destroy]
   before_action :set_address_book
+  before_action :set_contact, only: [:show, :edit, :update, :destroy]
 
   # GET /contacts
   # GET /contacts.json
@@ -67,7 +67,7 @@ class ContactsController < ApplicationController
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_contact
-      @contact = Contact.find(params[:id])
+      @contact = @address_book.contacts.find(params[:id])
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.
@@ -75,6 +75,6 @@ class ContactsController < ApplicationController
       params.require(:contact).permit(:first_name, :last_name, :phone_number, :email, :address, :address_book_id)
     end
     def set_address_book
-      @address_book = AddressBook.find(params[:address_book_id])
+      @address_book = current_user.address_books.find(params[:address_book_id])
     end
 end

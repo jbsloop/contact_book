@@ -3,17 +3,38 @@
 
 <div class="container">
   <a class="btn btn-link btn-small float-left" style="color: white;" href="<%= address_books_path %>">Back</a>
-  <span class="clearfix"></span>
-  <h1 class="text-center" style="color: white"><%= @address_book.name %></h1>
+  <div>
+    <%= link_to new_address_book_contact_path(@address_book, @contact), remote: true, class: "btn btn-info text-white float-right" do %>
+      <i class="fas fa-plus fa-sm"></i> New Contact
+    <% end %>
+    <div class="clearfix"></div>
+    <h1 class="text-center" style="color: white"><%= @address_book.name %></h1>
+  </div>
   <br>
 </div>
 <div class="clearfix"></div>
 <div class="container bg-dark">
   <div class="list-group">
+
     <% @contacts.each do |contact| %>
-        <a class="list-group-item list-group-item-action text-dark text-center bg-light" style="font-size: 1.5em" href="<%= address_book_contact_path(@address_book, contact) %>" role="button"><%= contact.first_name %> <%= contact.last_name %></a>     
+
+      <div class="list-group-item">
+        <a class="btn btn-light btn-sm text-dark float-right" href="<%= address_book_contact_path(@address_book, contact) %> " rel="nofollow" data-method="delete" data-confirm="Are you sure?" role="button" style="color: black;"><i class="fas fa-trash"></i></a>
+        <%= link_to edit_address_book_contact_path(@address_book, contact), remote: true, class: "btn btn-light float-right fas fa-edit" do %>
+          <i class=“fas fa-edit”></i>
+        <% end %>
+
+        <div class="container" style="width: 71em;">
+          <div class="row">
+            <div class="col text-center">
+              <%= link_to address_book_contact_path(@address_book, contact), remote: true, class: "btn btn-light btn-block text-dark text-center bg-light", style: "font-size: 1.5em" do %>
+                <%= contact.first_name %> <%= contact.last_name %>
+              <% end %>
+            </div>
+          </div>
+        </div>
+        <div class="clearfix"></div>
+      </div>
     <% end %>
-  
-    <a class="btn btn-info btn-lg btn-block text-white" href="<%= new_address_book_contact_path %>" role="button"><i class="fas fa-plus fa-sm"></i> New Contact</a>
   </div>
 </div>

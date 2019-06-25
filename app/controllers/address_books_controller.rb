@@ -5,7 +5,7 @@ class AddressBooksController < ApplicationController
   # GET /address_books
   # GET /address_books.json
   def index
-    @address_books = AddressBook.where(user_id: current_user.id)
+    @address_books = current_user.address_books
   end
 
   # GET /address_books/1
@@ -67,7 +67,7 @@ class AddressBooksController < ApplicationController
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_address_book
-      @address_book = AddressBook.find(params[:id])
+      @address_book = current_user.address_books.find(params[:id])
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.

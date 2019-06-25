@@ -1,0 +1,22 @@
+<div class="modal-dialog" role="document">
+    <div class="modal-content">
+        <div class="modal-body">
+            <div class="card" style="width: 35xem;">
+                <div class="card-body">
+                    <h6 class="font-weight-bold float-left"><%= @contact.first_name %> <%= @contact.last_name %> <small class="text-muted"><%= time_ago_in_words(@contact.updated_at) %> ago</small></h6>
+
+                    <div class="clearfix"></div>
+                    <p class="card-text text-dark clearfix">Phone Number: <%= @contact.phone_number %></p>
+                    <p class="card-text text-dark">Email: <%= @contact.email %></p>
+                    <p class="card-text text-dark">Address: <%= @contact.address %></p>
+                    <div class="container text-right text-dark">
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        </div>
+    </div>
+</div>
