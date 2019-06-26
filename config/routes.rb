@@ -13,6 +13,9 @@ Rails.application.routes.draw do
   devise_for :users
   namespace :admin do
     resources :users do
+      member do
+        get 'delete'
+      end
       get '/change_role', to: 'users#change_role'
       delete '/destroy', to: 'users#destroy'
     end

@@ -19,7 +19,9 @@
                         Make Admin
                     <% end %>
                 </a>
-                <a href="<%= admin_user_destroy_path(user.id) %>" class="fas fa-trash" data-method="delete"></a>
+                <%= link_to delete_admin_user_path(user), remote: true, style: "color: black;" do %>
+                    <i class="fas fa-trash"></i>
+                <% end %>
             </li>
             <div class="clearfix"></div>
         <% end %>

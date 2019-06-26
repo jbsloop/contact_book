@@ -1,4 +1,6 @@
 class Admin::UsersController < Admin::AdminController
+    before_action :set_user, only: [:delete]
+
     def index
         @users = User.all
         
@@ -20,7 +22,7 @@ class Admin::UsersController < Admin::AdminController
     end
 
     def destroy
-        @user = User.find(params[:user_id])
+        @user = User.find(params[:id])
 
         if @user.admin?
             redirect_to admin_users_url, notice: "Cannot delete an administrator"
@@ -31,4 +33,13 @@ class Admin::UsersController < Admin::AdminController
             redirect_to admin_users_url
         end
     end
+
+    def delete
+    end
+
+    private
+
+        def set_user
+            @user = User.find(params[:id])
+        end
 end
