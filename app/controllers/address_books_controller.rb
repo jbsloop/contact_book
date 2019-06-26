@@ -1,5 +1,5 @@
 class AddressBooksController < ApplicationController
-  before_action :set_address_book, only: [:show, :edit, :update, :destroy]
+  before_action :set_address_book, only: [:show, :edit, :update, :destroy, :delete]
   before_action :authenticate_user!
 
   # GET /address_books
@@ -62,6 +62,9 @@ class AddressBooksController < ApplicationController
       format.html { redirect_to address_books_url, notice: 'Address book was successfully destroyed.' }
       format.json { head :no_content }
     end
+  end
+
+  def delete
   end
 
   private

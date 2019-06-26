@@ -1,6 +1,13 @@
 Rails.application.routes.draw do
   resources :address_books do
-    resources :contacts
+    member do
+      get 'delete'
+    end
+    resources :contacts do
+      member do
+        get 'delete'
+      end
+    end
   end
   root 'address_books#index'
   devise_for :users

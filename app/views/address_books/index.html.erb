@@ -12,9 +12,11 @@
       <div class="row">
         <div class="card bg-light" style="width: 25em;">
           <div class="card-body">
-            <a class="btn btn-success text-dark fas fa-trash float-right" href="<%= address_book_path(address_book) %> " rel="nofollow" data-method="delete" data-confirm="Are you sure?" role="button"></a>
-            <%= link_to edit_address_book_path(address_book), remote: true, class: "btn btn-success text-dark float-left fas fa-edit" do %>
-
+            <%= link_to delete_address_book_path(address_book), remote: true, class: "btn btn-success text-dark float-right", style: "color: black;" do %>
+              <i class="fas fa-trash"></i>
+            <% end %>
+            <%= link_to edit_address_book_path(address_book), remote: true, class: "btn btn-success text-dark float-left" do %>
+              <i class="fas fa-edit"></i>
             <% end %>
             <a href="<%= address_book_contacts_path(address_book) %>" class="btn btn-success btn-block" style="color: white;"><%= address_book.name %></a>
             <br>

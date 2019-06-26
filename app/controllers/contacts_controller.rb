@@ -1,13 +1,14 @@
 class ContactsController < ApplicationController
   before_action :authenticate_user!
   before_action :set_address_book
-  before_action :set_contact, only: [:show, :edit, :update, :destroy]
+  before_action :set_contact, only: [:show, :edit, :update, :destroy, :delete]
 
   # GET /contacts
   # GET /contacts.json
   def index
     @contacts = @address_book.contacts
     @contacts.order(:first_name)
+    @address_books = current_user.address_books
   end
 
   # GET /contacts/1
@@ -62,6 +63,9 @@ class ContactsController < ApplicationController
       format.html { redirect_to @address_book, notice: 'Contact was successfully destroyed.' }
       format.json { head :no_content }
     end
+  end
+
+  def delete
   end
 
   private
