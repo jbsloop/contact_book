@@ -26,8 +26,6 @@ class Admin::UsersController < Admin::AdminController
 
         if @user.admin?
             redirect_to admin_users_url, notice: "Cannot delete an administrator"
-        elsif @user == current_user
-            redirect_to admin_users_url, notice: "Cannot delete Current User"
         else
             @user.destroy
             redirect_to admin_users_url

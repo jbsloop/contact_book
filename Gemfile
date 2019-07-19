@@ -56,6 +56,7 @@ group :test do
   gem 'selenium-webdriver'
   # Easy installation and use of chromedriver to run system tests with Chrome
   gem 'chromedriver-helper'
+  gem 'simplecov'
 end
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
@@ -74,3 +75,7 @@ gem 'bootstrap', '~> 4.3.1'
 gem 'font-awesome-sass', '~> 5.8.1'
 
 gem 'bootstrap_form'
+
+gem 'faker'
+
+gem 'factory_bot_rails'

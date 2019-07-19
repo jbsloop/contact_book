@@ -34,9 +34,6 @@ class ContactsController < ApplicationController
       if @contact.save
         format.html { redirect_to @address_book, notice: 'Contact was successfully created.' }
         format.json { render :show, status: :created, location: @contact }
-      else
-        format.html { render :new }
-        format.json { render json: @contact.errors, status: :unprocessable_entity }
       end
     end
   end
@@ -48,9 +45,6 @@ class ContactsController < ApplicationController
       if @contact.update(contact_params)
         format.html { redirect_to @address_book, notice: 'Contact was successfully updated.' }
         format.json { render :show, status: :ok, location: @contact }
-      else
-        format.html { render :edit }
-        format.json { render json: @contact.errors, status: :unprocessable_entity }
       end
     end
   end

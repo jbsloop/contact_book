@@ -1,5 +1,6 @@
 class User < ApplicationRecord
   has_many :address_books, dependent: :delete_all
+  has_one_attached :avatar
 
   enum role: [:user, :admin]
   after_initialize :set_default_role, :if => :new_record?

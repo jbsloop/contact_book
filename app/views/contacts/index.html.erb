@@ -45,7 +45,7 @@
                   <%= link_to delete_address_book_contact_path(@address_book, contact), remote: true, class: "btn btn-light text-dark float-right", style: "color: black;" do %>
                     <i class="fas fa-trash"></i>
                   <% end %>
-                  <%= link_to edit_address_book_contact_path(@address_book, contact), remote: true, class: "btn btn-light float-right" do %>
+                  <%= link_to edit_address_book_contact_path(@address_book, contact), remote: true, class: "btn btn-light text-dark float-right" do %>
                     <i class="fas fa-edit"></i>
                   <% end %>
                   <%= link_to address_book_contact_path(@address_book, contact), remote: true, class: "btn btn-light btn-block text-dark text-center bg-light text-center", style: "font-size: 1.5em" do %>

@@ -1,7 +1,11 @@
 require 'test_helper'
 
 class UserTest < ActiveSupport::TestCase
-  # test "the truth" do
-  #   assert true
-  # end
+  test "should create user with role user" do
+    user = create(:user)
+    
+    user.set_default_role
+
+    assert user.role = :user
+  end
 end

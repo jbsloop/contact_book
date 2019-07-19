@@ -33,9 +33,6 @@ class AddressBooksController < ApplicationController
       if @address_book.save
         format.html { redirect_to address_books_url, notice: 'Address book was successfully created.' }
         format.json { render :show, status: :created, location: @address_book }
-      else
-        format.html { render :new }
-        format.json { render json: @address_book.errors, status: :unprocessable_entity }
       end
     end
   end
@@ -47,9 +44,6 @@ class AddressBooksController < ApplicationController
       if @address_book.update(address_book_params)
         format.html { redirect_to address_books_url, notice: 'Address book was successfully updated.' }
         format.json { render :show, status: :ok, location: @address_book }
-      else
-        format.html { render :edit }
-        format.json { render json: @address_book.errors, status: :unprocessable_entity }
       end
     end
   end
