@@ -1,0 +1,23 @@
+<nav class="main-header navbar navbar-expand navbar-white navbar-light">
+    <ul class="navbar-nav">
+        <li class="navbar-item">
+            <a class="nav-link" data-widget="pushmenu" href="#" id="collapse-button">
+                <i class="fas fa-bars"></i>
+            </a>
+        </li>
+
+        <li class="navbar-item ml-2 vert-center-nav-item nav-logo" id="nav-logo">
+            <span class="ml-1"><i class="fas fa-book-open"></i> Contact Book</span>
+        </li>
+    </ul>
+
+    <ul class="navbar-nav ml-auto">
+        <li class="navbar-item vert-center-nav-item">
+            <i class="fas fa-user-tie fa-lg"></i> <%= current_user.email %>
+        </li>
+
+        <li class="navbar-item float-right">
+            <%= link_to 'Sign Out', destroy_user_session_path, method: :delete, class: 'nav-link' %>
+        </li>
+    </ul>
+</nav>

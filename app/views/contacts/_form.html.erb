@@ -1,0 +1,37 @@
+<%= form_with(model: contact, local: true) do |form| %>
+  <% if contact.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(contact.errors.count, "error") %> prohibited this contact from being saved:</h2>
+
+      <ul>
+        <% contact.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+  <div class="field">
+    <div><%= form.label :first_name %></div>
+    <div><%= form.text_field :first_name %></div>
+  </div>
+
+  <div class="field">
+    <div><%= form.label :last_name %></div>
+    <div><%= form.text_field :last_name %></div>
+  </div>
+
+  <div class="field">
+    <div><%= form.label :phone_number %></div>
+    <div><%= form.text_field :phone_number %></div>
+  </div>
+
+  <div class="field">
+    <div><%= form.label :email %></div>
+    <div><%= form.text_field :email %></div>
+  </div>
+  <div class="card-footer">
+    <%= form.submit class: "btn btn-info", style: "text-white"%>
+    <%= link_to 'Back', contacts_path, class: "ml-2"%>
+  </div>
+<% end %>
+  

@@ -1,0 +1,52 @@
+<div class="card">
+  <div class="card-header">
+    <div>
+      <h2 class="float-left">Contacts</h2>
+      <%= link_to new_contact_path, class: "btn btn-outline-info text-white text-info float-right mt-1" do %>
+        <i class="fas fa-plus fa-sm"></i> Contact
+      <% end %>
+    </div>
+
+    <div class="clearfix"></div>
+
+    <div class="card-body table-responsive height-fixed p-0">
+      <table class="table table-head-fixed">
+        <thead class="mt-0">
+          <tr class="mt-0">
+            <th>First name</th>
+            <th>Last name</th>
+            <th>Phone number</th>
+            <th>Email</th>
+            <th colspan="3"></th>
+          </tr>
+        </thead>
+      </div>
+
+      <tbody>
+        <% @contacts.each do |contact| %>
+          <tr class="bg-white">
+            <td><%= contact.first_name %></td>
+            <td><%= contact.last_name %></td>
+            <td><%= contact.phone_number %></td>
+            <td><%= contact.email %></td>
+            <td>
+              <%= link_to contact, class: "btn btn-sm btn-link mr-1 text-dark" do %>
+                <i class="fas fa-info"></i>
+              <% end %>
+
+              <%= link_to edit_contact_path(contact), class: "btn btn-sm btn-link mr-1 ml-1 text-dark" do %>
+                <i class="fas fa-edit"></i>
+              <% end %>
+
+              <%= link_to contact, method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-sm btn-link mr-1 ml-1 text-dark" do %>
+                <i class="fas fa-trash"></i>
+              <% end %>
+            </td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+  </div>
+</div>
+
+  <br>

@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Experimentation</title>
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
+
+    <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload', defer: true %>
+    <%= stylesheet_pack_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+  </head>
+
+  <body class="hold-transition layout-fixed">
+    <div class="wrapper">
+      <% if current_user %>
+        <%= render 'side_nav' %>
+        <%= render 'top_nav' %>
+        <div class="content-wrapper">
+          <div class="content-header">
+          </div>
+          <section class="content mr-3 ml-3">
+            <% if notice %>
+              <p class="alert alert-success"><%= notice %></p>
+            <% end %>
+
+            <% if alert %>
+              <p class="alert alert-danger"><%= alert %></p>
+            <% end %>
+            <%= yield %>
+      <% else %>
+        <%= yield %>
+      <% end %>
+        </section>
+      </div>
+    </div>
+    <script>
+      $(document).ready(function() {
+        $('.drop-down-arrow').click(function() {
+
+          var $this = $(this)
+          if($this.hasClass('active')) {
+            $this.removeClass('active')
+          } else {
+            $this.addClass('active')
+          }
+
+        });
+      });
+    </script>
+  </body>
+</html>
+
