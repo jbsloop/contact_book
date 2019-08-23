@@ -1,6 +1,6 @@
 class ContactsController < ApplicationController
   before_action :set_contact, only: [:show, :edit, :update, :destroy]
-
+  before_action :set_recent_login
   # GET /contacts
   # GET /contacts.json
   def index
@@ -59,6 +59,14 @@ class ContactsController < ApplicationController
       format.html { redirect_to contacts_url, notice: 'Contact was successfully destroyed.' }
       format.json { head :no_content }
     end
+  end
+
+  def set_recent_login
+      if session[:recent_login].nil?
+          session[:recent_login] = false
+      else
+          session[:recent_login] = true
+      end
   end
 
   private

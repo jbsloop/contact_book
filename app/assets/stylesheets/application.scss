@@ -1,3 +1,5 @@
+@import 'bootstrap';
+
 .logo:hover {
     background-color: transparent;
 }
@@ -51,15 +53,18 @@
 }
 
 .side-nav-mt {
-    margin-top: 56px;
+    margin-top: 20px;
 }
 
 .drop-down-arrow {
-    transition: transform .8s;
+    transition: transform .8s, width .8s, height .8s, padding-bottom .8s;
 }
 
-.drop-down-arrow:active {
-    transform: rotate(90deg);
+.drop-down-arrow.active {
+    transform: rotate(-90deg);
+    width: 42px;
+    height: 45px;
+    padding-bottom: 12px;
 }
 
 .border-right-0 {
