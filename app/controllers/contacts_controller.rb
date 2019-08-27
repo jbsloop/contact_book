@@ -1,10 +1,12 @@
 class ContactsController < ApplicationController
-  before_action :set_contact, only: [:show, :edit, :update, :destroy]
-  before_action :set_recent_login
+  before_action :set_contact, only: [:show, :edit, :update, :destroy, :delete]
+  before_action :set_address_book
   # GET /contacts
   # GET /contacts.json
   def index
-    @contacts = Contact.all
+    @contacts = @address_book.contacts
+    @contacts.order(:first_name)
+    @address_books = current_user.address_books
   end
 
   # GET /contacts/1
@@ -24,11 +26,13 @@ class ContactsController < ApplicationController
   # POST /contacts
   # POST /contacts.json
   def create
-    @contact = Contact.new(contact_params)
+    @contact = @address_book.contacts.new(contact_params)
+    @contact.address_book_id = @address_book.id
+    @contact.user_id = current_user.id
 
     respond_to do |format|
       if @contact.save
-        format.html { redirect_to @contact, notice: 'Contact was successfully created.' }
+        format.html { redirect_to address_book_contact_path(@address_book, @contact), notice: 'Contact was successfully created.' }
         format.json { render :show, status: :created, location: @contact }
       else
         format.html { render :new }
@@ -42,7 +46,7 @@ class ContactsController < ApplicationController
   def update
     respond_to do |format|
       if @contact.update(contact_params)
-        format.html { redirect_to @contact, notice: 'Contact was successfully updated.' }
+        format.html { redirect_to address_book_contact_path(@address_book, @contact), notice: 'Contact was successfully updated.' }
         format.json { render :show, status: :ok, location: @contact }
       else
         format.html { render :edit }
@@ -56,17 +60,13 @@ class ContactsController < ApplicationController
   def destroy
     @contact.destroy
     respond_to do |format|
-      format.html { redirect_to contacts_url, notice: 'Contact was successfully destroyed.' }
+      format.html { redirect_to address_book_contacts_url, notice: 'Contact was successfully destroyed.' }
       format.json { head :no_content }
     end
   end
 
-  def set_recent_login
-      if session[:recent_login].nil?
-          session[:recent_login] = false
-      else
-          session[:recent_login] = true
-      end
+  def delete
+
   end
 
   private
@@ -78,5 +78,9 @@ class ContactsController < ApplicationController
     # Never trust parameters from the scary internet, only allow the white list through.
     def contact_params
       params.require(:contact).permit(:first_name, :last_name, :phone_number, :email)
+    end
+
+    def set_address_book
+      @address_book = current_user.address_books.find(params[:address_book_id])
     end
 end

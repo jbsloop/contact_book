@@ -1,0 +1,19 @@
+<%= bootstrap_form_with(model: address_book, local: true) do |form| %>
+  <% if address_book.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(address_book.errors.count, "error") %> prohibited this address_book from being saved:</h2>
+
+      <ul>
+        <% address_book.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+  <%= form.text_field :name %>
+  <%= form.text_area :description %>
+
+  <div class="modal-footer mt-4">
+    <%= form.submit class: 'btn btn-info text-white float-right' %>
+  </div>
+<% end %>

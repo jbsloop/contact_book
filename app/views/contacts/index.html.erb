@@ -1,8 +1,8 @@
 <div class="card">
   <div class="card-header">
     <div>
-      <h2 class="float-left">Contacts</h2>
-      <%= link_to new_contact_path, class: "btn btn-outline-info text-white text-info float-right mt-1" do %>
+      <h2 class="float-left"><%= @address_book.name %></h2>
+      <%= link_to new_address_book_contact_path, class: "btn btn-outline-info text-white text-info float-right mt-1", remote: true do %>
         <i class="fas fa-plus fa-sm"></i> Contact
       <% end %>
     </div>
@@ -30,15 +30,15 @@
             <td><%= contact.phone_number %></td>
             <td><%= contact.email %></td>
             <td>
-              <%= link_to contact, class: "btn btn-sm btn-link mr-1 text-dark" do %>
+              <%= link_to address_book_contact_path(@address_book, contact), class: "btn btn-sm btn-link mr-1 text-dark", remote: true do %>
                 <i class="fas fa-info"></i>
               <% end %>
 
-              <%= link_to edit_contact_path(contact), class: "btn btn-sm btn-link mr-1 ml-1 text-dark" do %>
+              <%= link_to edit_address_book_contact_path(@address_book, contact), class: "btn btn-sm btn-link mr-1 ml-1 text-dark", remote: true do %>
                 <i class="fas fa-edit"></i>
               <% end %>
 
-              <%= link_to contact, method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-sm btn-link mr-1 ml-1 text-dark" do %>
+              <%= link_to delete_address_book_contact_path(@address_book, contact), class: "btn btn-sm btn-link mr-1 ml-1 text-dark", remote: true do %>
                 <i class="fas fa-trash"></i>
               <% end %>
             </td>

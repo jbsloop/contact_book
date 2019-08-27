@@ -1,0 +1,37 @@
+<div class="row">
+  <div class="col-12">
+    <h1 class="float-left">Address Books:</h1>
+
+    <%= link_to new_address_book_path, class: 'btn btn-outline-info text-white text-info float-right mt-1', remote: true do %>
+      <i class="fas fa-plus fa-sm"></i> Address Book
+    <% end %>
+    <div class="clearfix"></div>
+
+    <% @address_books.each do |address_book| %>
+      <div class="card">
+        <div class="card-header">
+          <h2><%= link_to "#{address_book.name}", address_book, class: "text-dark float-left" %></h2>
+          
+          <%= link_to edit_address_book_path(address_book), class: "float-left ml-2 text-dark", remote: true do %>
+            <i class="fas fa-edit"></i>
+          <% end %>
+
+          <%= link_to delete_address_book_path(address_book), remote: true, class: "float-left ml-2 text-dark" do %>
+            <i class="fas fa-trash"></i>
+          <% end %>
+        </div>
+
+        <div class="clearfix"></div>
+
+        <div class="card-body">
+          <div class="card-title">
+            Description:
+          </div>
+          <div class="card-text ml-4">
+            <%= address_book.description %>
+          </div>
+        </div>
+      </div>
+    <% end %>
+  </div>
+</div>

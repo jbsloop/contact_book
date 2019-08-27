@@ -1,0 +1,19 @@
+<div class="modal-dialog" role="document">
+    <div class="modal-content">
+        <div class="modal-header">
+            <h5 class="modal-title" id="<%= @address_book %>ModalLabel">Are you Sure?</h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+            </button>
+        </div>
+        <div class="modal-body">
+            <div class="mx-auto align-content-center" style="color: black; width: 400px;">
+                This address book and all of it's contacts will be deleted permanently. Would you like to continue?
+            </div>
+        </div>
+        <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+            <%= link_to "Delete", address_book_path(@address_book), method: :delete, class: "btn btn-danger", style: "color: white;" %>
+        </div>
+    </div>
+</div>

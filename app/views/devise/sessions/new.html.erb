@@ -1,8 +1,7 @@
 <div class="row">
-  <div class="col-4"></div>
-  <div class="col-4 text-center">  
+  <div class="mx-auto align-content-center">  
     <div class="card card-info mt-5">
-      <div class="card-header">
+      <div class="card-header text-center">
         <i class="fas fa-book-open fa-2x">
         </i>
         <h2>Log in</h2>
@@ -10,19 +9,17 @@
 
       <div class="card-body">
         <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
-          <div class="form-group">
-            <%= f.label :email %><br />
-            <%= f.email_field :email, autofocus: true, autocomplete: "email", placeholder: 'Enter Email', class: 'width-100' %>
+          <div class="field">
+            <%= f.email_field :email, autofocus: true, autocomplete: "email", placeholder: 'Enter Email', class: "width-100 pb-1 pt-1" %>
           </div>
 
-          <div class="form-group">
-            <%= f.label :password %><br />
-            <%= f.password_field :password, autocomplete: "current-password", placeholder: 'Enter Password', class: "width-100" %>
+          <div class="field mt-4">
+            <%= f.password_field :password, autocomplete: "current-password", placeholder: 'Enter Password', class: "width-100 pb-1 pt-1" %>
             <%= link_to "Forgot your password?", new_user_password_path, class: "text-dark" %>
           </div>
           
           <% if devise_mapping.rememberable? %>
-            <div class="check-group">
+            <div class="check-group mt-4">
               <%= f.check_box :remember_me %>
               <%= f.label :remember_me %>
             </div>
@@ -37,5 +34,4 @@
         <% end %>
     </div>
   </div>
-  <div class="col-4"></div>
 </div>

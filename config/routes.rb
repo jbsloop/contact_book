@@ -1,7 +1,17 @@
 Rails.application.routes.draw do
-  devise_for :users
-  resources :contacts
+  resources :address_books do
+    resources :contacts do
+      member do
+        get 'delete'
+      end
+    end
 
-  root to: "contacts#index"
+    member do
+      get 'delete'
+    end
+  end
+  devise_for :users
+
+  root to: 'address_books#index'
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 end
