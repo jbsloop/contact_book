@@ -35,3 +35,13 @@
     <% end %>
   </div>
 </div>
+
+<% if session[:recent_login] == false %>
+  <script>
+    $(document).ready(function() {
+      $("#shared-modal").html("<%= j (render partial: 'intro_model') %>");
+      $("#shared-modal").modal();
+    })
+  </script>
+  <% session[:recent_login] = true %>
+<%end%>

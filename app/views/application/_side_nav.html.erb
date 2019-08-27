@@ -5,15 +5,17 @@
             <div class="col-1"></div>
                 <div class="col-10 width-100">
                     <ul class="nav nav-sidebar flex-column" data-widget="treeview" role="menu">
-                        <li class="nav-item width-100">
-                            <button class="nav-link btn-dark width-75 no-margin float-left">Test</button>
-                            <button class="nav-link btn-dark width-25 mt-0 mb-0 drop-down-arrow has-treeview float-right"><</button>
-                            <ul class="nav nav-treeview">
-                                <li class="nav-item">
-                                    <button class="btn btn-dark btn-sm width-66 ml-3">Some place</button>
-                                </li>
-                            </ul>
-                        </li>
+                        <% @address_books.each do |address_book| %>
+                            <li class="nav-item width-100">
+                                <a href="/address_books/<%= address_book.id %>/contacts" class="text-center nav-link btn-dark width-75 no-margin float-left"><%= address_book.name %></a>
+                                <button class="nav-link btn-dark width-25 mt-0 mb-0 drop-down-arrow has-treeview float-right"><</button>
+                                <ul class="nav nav-treeview">
+                                    <li class="nav-item">
+                                        <button class="btn btn-dark btn-sm width-66 ml-3">Contacts</button>
+                                    </li>
+                                </ul>
+                            </li>
+                        <% end %>
                     </div>
                 </div>
                 <div class="col-1"></div>
