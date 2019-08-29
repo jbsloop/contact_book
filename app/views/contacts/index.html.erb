@@ -13,6 +13,7 @@
       <table class="table table-head-fixed">
         <thead class="mt-0">
           <tr class="mt-0">
+            <th colspan="1"></th>
             <th>First name</th>
             <th>Last name</th>
             <th>Phone number</th>
@@ -25,11 +26,25 @@
       <tbody>
         <% @contacts.each do |contact| %>
           <tr class="bg-white">
-            <td><%= contact.first_name %></td>
-            <td><%= contact.last_name %></td>
-            <td><%= contact.phone_number %></td>
-            <td><%= contact.email %></td>
-            <td>
+            <td class="align-baseline">
+              <%= form_for([@address_book, contact], remote: true) do |f| %>
+                <%= f.hidden_field :is_favorite, value: !contact.is_favorite, id: "#{contact.id}-is-favorite-field" %>
+                <% if contact.is_favorite == true %>
+                  <%= button_tag class: "btn btn-link btn-sm pb-1", type: 'submit'  do %>
+                    <i class="fa fa-star text-yellow" aria-hidden="true" id="<%= contact.id %>-toggle-favorite"></i>
+                  <% end %>
+                <% else %>
+                  <%= button_tag class: "btn btn-link btn-sm text-dark", type: 'submit' do %>
+                    <i class="far fa-star" aria-hidden="true" id="<%= contact.id %>-toggle-favorite"></i>
+                  <% end %>
+                <% end %>
+              <% end %>
+            </td>
+            <td class="align-middle"><%= contact.first_name %></td>
+            <td class="align-middle"><%= contact.last_name %></td>
+            <td class="align-middle"><%= contact.phone_number %></td>
+            <td class="align-middle"><%= contact.email %></td>
+            <td class="align-baseline">
               <%= link_to address_book_contact_path(@address_book, contact), class: "btn btn-sm btn-link mr-1 text-dark", remote: true do %>
                 <i class="fas fa-info"></i>
               <% end %>

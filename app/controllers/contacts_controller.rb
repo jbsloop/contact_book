@@ -6,7 +6,6 @@ class ContactsController < ApplicationController
   def index
     @contacts = @address_book.contacts
     @contacts.order(:first_name)
-    @address_books = current_user.address_books
   end
 
   # GET /contacts/1
@@ -32,8 +31,8 @@ class ContactsController < ApplicationController
 
     respond_to do |format|
       if @contact.save
-        format.html { redirect_to address_book_contact_path(@address_book, @contact), notice: 'Contact was successfully created.' }
-        format.json { render :show, status: :created, location: @contact }
+        format.html { redirect_to address_book_contacts_path(@address_book), notice: 'Contact was successfully created.' }
+        format.json { render :show, status: :created, location: @address_book }
       else
         format.html { render :new }
         format.json { render json: @contact.errors, status: :unprocessable_entity }
@@ -46,11 +45,13 @@ class ContactsController < ApplicationController
   def update
     respond_to do |format|
       if @contact.update(contact_params)
-        format.html { redirect_to address_book_contact_path(@address_book, @contact), notice: 'Contact was successfully updated.' }
-        format.json { render :show, status: :ok, location: @contact }
+        format.html { redirect_to address_book_contacts_path(@address_book), notice: 'Contact was successfully updated.' }
+        format.json { render :show, status: :ok, location: @address_book }
+        format.js
       else
         format.html { render :edit }
         format.json { render json: @contact.errors, status: :unprocessable_entity }
+        format.js
       end
     end
   end
@@ -77,7 +78,7 @@ class ContactsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def contact_params
-      params.require(:contact).permit(:first_name, :last_name, :phone_number, :email)
+      params.require(:contact).permit(:first_name, :last_name, :phone_number, :email, :is_favorite)
     end
 
     def set_address_book

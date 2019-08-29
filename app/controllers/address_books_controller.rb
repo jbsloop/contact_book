@@ -5,7 +5,6 @@ class AddressBooksController < ApplicationController
   # GET /address_books
   # GET /address_books.json
   def index
-    @address_books = current_user.address_books
   end
 
   # GET /address_books/1

@@ -10,9 +10,15 @@
                                 <a href="/address_books/<%= address_book.id %>/contacts" class="text-center nav-link btn-dark width-75 no-margin float-left"><%= address_book.name %></a>
                                 <button class="nav-link btn-dark width-25 mt-0 mb-0 drop-down-arrow has-treeview float-right"><</button>
                                 <ul class="nav nav-treeview">
-                                    <li class="nav-item">
-                                        <button class="btn btn-dark btn-sm width-66 ml-3">Contacts</button>
-                                    </li>
+                                    <% if @address_books_favorites[address_book.name].present? %>
+                                        <% @address_books_favorites[address_book.name].each do |favorites| %>
+                                            <% favorites.each do |favorite| %>
+                                                <li class="nav-item">
+                                                    <%= link_to "#{favorite[1]} #{favorite[2]}", address_book_contact_path(address_book, favorite[0]), class: "btn btn-dark btn-sm width-66 ml-3", remote: true %>
+                                                </li>
+                                            <% end %>
+                                        <% end %>
+                                    <% end %>
                                 </ul>
                             </li>
                         <% end %>

@@ -1,0 +1,9 @@
+$("#<%= @contact.id %>-is-favorite-field").val(<%= !@contact.is_favorite %>);
+
+if (<%= @contact.is_favorite %> == true) {
+    $("#<%= @contact.id %>-toggle-favorite").removeClass('far text-dark');
+    $("#<%= @contact.id %>-toggle-favorite").addClass('fa text-yellow');
+} else {
+    $("#<%= @contact.id %>-toggle-favorite").removeClass('fa text-yellow');
+    $("#<%= @contact.id %>-toggle-favorite").addClass('far text-dark');
+}
