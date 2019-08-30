@@ -6,9 +6,9 @@
                 <div class="col-10 width-100">
                     <ul class="nav nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
                         <% @address_books.each do |address_book| %>
-                            <li class="nav-item has-treeview width-100">
-                                <a href="/address_books/<%= address_book.id %>/contacts" class="text-center nav-link btn-dark width-75 no-margin float-left"><%= address_book.name %></a>
-                                <button class="nav-link btn-dark width-25 mt-0 mb-0 drop-down-arrow float-right" id="<%= address_book.id %>-menu-arrow"><</button>
+                            <li class="nav-item has-treeview side-bar-btn-group width-100">
+                                <a href="/address_books/<%= address_book.id %>/contacts" class="text-center nav-link btn-dark nav-link-btn-group-btn width-75 no-margin float-left"><%= address_book.name %></a>
+                                <a class="nav-link btn-dark nav-link-btn-group-btns width-25 mt-0 mb-0 drop-down-arrow float-right"><</a>
                                 <ul class="nav nav-treeview">
                                     <% if @address_books_favorites[address_book.name].present? %>
                                         <% @address_books_favorites[address_book.name].each do |favorites| %>
@@ -21,8 +21,26 @@
                                     <% end %>
                                 </ul>
                             </li>
+                            <script>
+                                $('ul').on('expanded.lte.treeview', function(event) {
+                                    var open_menus = $('.menu-open');
+                                    open_menus.each(function() {
+                                        $(this).children('.drop-down-arrow').addClass('active');
+                                        console.log(event);
+                                    });
+                                });
+
+
+                                $('ul').on('collapsed.lte.treeview', function() {
+                                    var closed_menus = $(this).children('li').not('.menu-open');
+
+                                    closed_menus.each(function() {
+                                        $(this).children('.drop-down-arrow').removeClass('active');
+                                    });
+                                });
+                            </script>
                         <% end %>
-                    </div>
+                    </ul>
                 </div>
                 <div class="col-1"></div>
             </div>
