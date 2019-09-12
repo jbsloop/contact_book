@@ -61,6 +61,13 @@
     transition: transform .5s, width .5s, height .5s, padding-bottom .5s;
 }
 
+.drop-down-arrow.active {
+    transform: rotate(-90deg);
+    width: 42px;
+    height: 45px;
+    padding-bottom: 12px;
+}
+
 .drop-down-arrow:active, .drop-down-arrow:focus, .drop-down-arrow:hover, .drop-down-arrow.active {
     background-color: transparent;
     border: none;
